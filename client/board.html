@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Доска — Collab Board</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="board-page">
+  <header class="topbar">
+    <a href="/" class="logo">🎨 Collab Board</a>
+    <div class="board-info">
+      <span class="label-inline">ID доски:</span>
+      <code id="board-id">—</code>
+      <button id="btn-copy-id" class="btn btn-ghost" title="Скопировать ID">📋</button>
+    </div>
+    <div class="conn-info">
+      <span id="ws-status" class="dot dot-off" title="WebSocket"></span>
+      <span>👥 <span id="user-count">0</span></span>
+    </div>
+  </header>
+
+  <div class="workspace">
+    <!-- Панель инструментов -->
+    <aside class="toolbar">
+      <button class="tool active" data-tool="select" title="Выбор / перемещение (V)">↖</button>
+      <button class="tool" data-tool="rect"     title="Прямоугольник (R)">▭</button>
+      <button class="tool" data-tool="circle"   title="Круг (C)">◯</button>
+      <button class="tool" data-tool="triangle" title="Треугольник (T)">△</button>
+      <button class="tool" data-tool="line"     title="Линия (L)">╱</button>
+      <button class="tool" data-tool="text"     title="Текст (X)">T</button>
+      <button class="tool" data-tool="image"    title="Изображение (I)">🖼</button>
+      <div class="sep"></div>
+      <button class="tool danger" id="btn-delete" title="Удалить выбранный (Del)">🗑</button>
+    </aside>
+
+    <!-- Холст -->
+    <div class="canvas-wrap" id="canvas-wrap">
+      <svg id="canvas" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+            <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect width="100%" height="100%" fill="url(#grid)" pointer-events="none"/>
+        <g id="objects-layer"></g>
+      </svg>
+      <input id="file-input" type="file" accept="image/*" hidden />
+    </div>
+
+    <!-- Панель свойств -->
+    <aside class="props" id="props">
+      <h3>Свойства</h3>
+      <div id="props-body" class="props-body">
+        <p class="muted">Выберите объект, чтобы редактировать его свойства.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="/board.js"></script>
+</body>
+</html>

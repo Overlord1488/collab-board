@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Collab Board</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="landing">
+  <main class="card">
+    <h1>🎨 Collab Board</h1>
+    <p class="subtitle">Совместная интерактивная доска в реальном времени</p>
+
+    <button id="btn-create" class="btn btn-primary">Создать новую доску</button>
+
+    <div class="divider"><span>или</span></div>
+
+    <label for="board-id-input" class="label">Присоединиться к существующей:</label>
+    <div class="row">
+      <input id="board-id-input" type="text" placeholder="ID доски" autocomplete="off" />
+      <button id="btn-join" class="btn">Войти</button>
+    </div>
+
+    <p id="status" class="status"></p>
+  </main>
+
+  <footer class="foot">
+    <small>Node.js · Express · WebSocket · SVG</small>
+  </footer>
+
+  <script src="/app.js"></script>
+</body>
+</html>
